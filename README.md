@@ -25,7 +25,7 @@ docker-compose up
 
 ## Usage
 
-Please import the Insomnia_2020-11-09.json in your Insomnia Clinet to perform requests to the Apis
+Please import the Insomnia_2020-11-09.json in your Insomnia Client to perform requests to the Apis
 
 <!-- LICENSE -->
 
