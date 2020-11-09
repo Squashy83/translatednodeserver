@@ -11,6 +11,10 @@ Docker has to be installed.
 - Docker
 - [Insomnia Client](https://insomnia.rest/)
 
+## Known Issues
+
+Warning: the MySQL Server does not allow connections, this has to be fixed in a future release!
+
 ### How to Run
 
 ```sh
