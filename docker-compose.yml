@@ -1,0 +1,35 @@
+version: "3.1"
+services:
+  app:
+    build:
+      context: .
+      target: production
+    container_name: translatedApp
+    # working_dir: /app
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
+    ports:
+      - ${PORT}:${PORT}
+      - 9230:9230
+    command: npm run startprod
+    env_file: .env
+    environment:
+      "NODE_ENV": "production"
+    depends_on:
+      - mysql
+
+  mysql:
+    env_file: ./.env
+    image: mysql:5.7
+    container_name: mysql
+    volumes:
+      - ./data/db:/var/lib/mysql
+      - .docker/setup.sql:/docker-entrypoint-initdb.d/setup.sql
+    restart: always
+    ports:
+      - "${DB_PORT}:${DB_PORT}"
+    environment:
+      "MYSQL_DATABASE": "${DB_DATABASE}"
+      "MYSQL_ROOT_PASSWORD": "${DB_PASSWORD}"
+      "MYSQL_USER": "${MYSQL_USER}"
